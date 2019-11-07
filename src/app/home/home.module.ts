@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { HomePage } from './home.page';
 
@@ -16,7 +17,8 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
+    NgxAuthFirebaseUIModule
   ],
   declarations: [HomePage]
 })

@@ -6,8 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
-  //templateUrl: 'app.component.html',
-  template: '<ngx-auth-firebaseui (onSuccess)="printUser($event)" (onError)="printError()"></ngx-auth-firebaseui>',
+  templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
@@ -24,13 +23,5 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  printUser(event) {
-    console.log(event);
-  }
-
-  printError(event) {
-    console.error(event);
   }
 }

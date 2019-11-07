@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import {NgxAuthFirebaseUIModule} from 'ngx-auth-firebaseui';
 
 import { HomePage } from './home.page';
 
@@ -10,7 +11,10 @@ describe('HomePage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomePage ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        NgxAuthFirebaseUIModule.forRoot(null),
+        IonicModule.forRoot()
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
