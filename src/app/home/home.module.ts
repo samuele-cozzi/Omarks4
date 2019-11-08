@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+
+import { FooterComponentModule } from '../footer/footer.module';
 
 import { HomePage } from './home.page';
 
@@ -12,13 +13,13 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    FooterComponentModule,
     RouterModule.forChild([
       {
         path: '',
         component: HomePage
       }
-    ]),
-    NgxAuthFirebaseUIModule
+    ])
   ],
   declarations: [HomePage]
 })
