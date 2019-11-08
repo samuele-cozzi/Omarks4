@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import {LinkMenuItem} from 'ngx-auth-firebaseui';
 
 @Component({
@@ -10,20 +11,22 @@ export class FooterComponent implements OnInit {
 
   links: LinkMenuItem[];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.links = [
       {icon: 'home', text: 'Widgets', callback: this.logOut},
-      {icon: 'favorite', text: 'Reorder', callback: this.logOut},
-      {icon: 'logout', text: 'Settings', callback: this.logOut},
-      {icon: 'logout', text: 'Profile', callback: this.logOut},
-      {icon: 'logout', text: 'Logout', callback: this.logOut},
+      {icon: 'reorder', text: 'Reorder', callback: this.logOut},
+      {icon: 'settings', text: 'Settings', callback: this.gotoSetting},
     ];
   }
 
   logOut(event) {
     location.reload();
+  }
+
+  gotoSetting(event){
+    window.location.href = '/settings';
   }
 
 }
