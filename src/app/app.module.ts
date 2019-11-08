@@ -28,8 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       projectId: 'omarks4',
       storageBucket: 'omarks4.appspot.com',
       messagingSenderId: '1040962154792'
-    }
-    ,() => 'omarks4',
+    }, null,
     {
       enableFirestoreSync: true, // enable/disable autosync users with firestore
       toastMessageOnAuthSuccess: false, // whether to open/show a snackbar message on auth success - default : true
