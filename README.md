@@ -57,6 +57,7 @@ $ cd ..
 ```shell
 $ ionic build
 $ ionic serve
+$ ionic serve --lab
 ```
 
 ### Delivery
