@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  dark = false;
+  constructor() {
+    
+   }
 
   ngOnInit() {
+    this.dark = false;
   }
 
+  changeDark(){
+    document.body.classList.toggle('dark', this.dark);
+  }
 }

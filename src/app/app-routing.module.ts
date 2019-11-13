@@ -5,8 +5,9 @@ import {LoggedInGuard} from 'ngx-auth-firebaseui';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), canActivate: [LoggedInGuard] },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+  { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule), canActivate: [LoggedInGuard] },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
 
 ];
 

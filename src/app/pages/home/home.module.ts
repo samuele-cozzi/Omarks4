@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { FooterComponentModule } from '../footer/footer.module';
+import { FooterComponentModule } from '../../components/footer/footer.module';
 
 import { HomePage } from './home.page';
 
