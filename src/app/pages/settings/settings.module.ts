@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
+import { SettingsService} from '../../services/settings.service';
+
 import { SettingsPage } from './settings.page';
 
 const routes: Routes = [
@@ -20,6 +22,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
+  ],
+  providers:[
+    SettingsService
   ],
   declarations: [SettingsPage]
 })

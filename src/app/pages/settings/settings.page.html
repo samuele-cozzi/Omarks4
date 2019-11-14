@@ -5,13 +5,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="srv.settings">
     <ion-item lines="full">
       <ion-icon slot="start" name="moon"></ion-icon>
       <ion-label>
-        Toggle Dark Theme
+        Toggle Dark Theme 
       </ion-label>
-      <ion-toggle [(ngModel)]="dark" (ionChange)="changeDark($event)" slot="end"></ion-toggle>
+      <ion-toggle [(ngModel)]="srv.settings.dark" (ngModelChange)="save($event)" slot="end"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Default Label</ion-label>
+      <ion-input [(ngModel)]="srv.settings.text" (ngModelChange)="save($event)" ></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>
