@@ -1,6 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-  <ngx-auth-firebaseui 
-    [providers]="[providers.Google, providers.Microsoft]"
-    (onSuccess)="loggedIn($event)" (onError)="loggedError($event)"></ngx-auth-firebaseui>
+    <ngx-auth-firebaseui [providers]="[providers.Google, providers.Microsoft]" 
+      (onSuccess)="loggedIn($event)"
+      (onError)="loggedError($event)"
+      [verifyEmailGoBackText]="'Home'"
+      [signOutText]="'Sign Out'"
+      ></ngx-auth-firebaseui>
 </ion-content>

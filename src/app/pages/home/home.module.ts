@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { FooterComponentModule } from '../../components/footer/footer.module';
+import { SettingsService} from '../../services/settings.service';
 
 import { HomePage } from './home.page';
 
@@ -20,6 +21,9 @@ import { HomePage } from './home.page';
         component: HomePage
       }
     ])
+  ],
+  providers:[
+    SettingsService
   ],
   declarations: [HomePage]
 })

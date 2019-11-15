@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService} from '../../services/settings.service';
-import { Settings } from '../../shared/settings.model'
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +12,7 @@ export class SettingsPage {
     private srv: SettingsService
   ) {
     
-   }
+  }
 
   save(){
     this.srv.update();

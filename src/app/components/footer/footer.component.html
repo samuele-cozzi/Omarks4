@@ -1,16 +1,21 @@
 <ion-footer>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ngx-auth-firebaseui-avatar (onSignOut)="logOut($event)" [links]="links"></ngx-auth-firebaseui-avatar>
-        <ion-button>
-          <ion-icon slot="icon-only" name="more"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-searchbar showCancelButton="always"></ion-searchbar>
-      <ion-buttons slot="primary">
-        <ion-button>
-          <ion-icon slot="icon-only" name="more"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!--<ngx-auth-firebaseui-avatar (onSignOut)="logOut($event)" [links]="links"></ngx-auth-firebaseui-avatar>-->
+      <ion-item (click)="gotoPage('login')">
+        <ion-avatar>
+          <img [src]="settings.photo_url">
+        </ion-avatar>
+      </ion-item>
+      <ion-button (click) ="gotoPage('settings')" >
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar showCancelButton="always"></ion-searchbar>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

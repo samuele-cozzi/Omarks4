@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>settings</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,13 +12,13 @@
     <ion-item lines="full">
       <ion-icon slot="start" name="moon"></ion-icon>
       <ion-label>
-        Toggle Dark Theme 
+        Toggle Dark Theme
       </ion-label>
       <ion-toggle [(ngModel)]="srv.settings.dark" (ngModelChange)="save($event)" slot="end"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Default Label</ion-label>
-      <ion-input [(ngModel)]="srv.settings.text" (ngModelChange)="save($event)" ></ion-input>
+      <ion-input [(ngModel)]="srv.settings.text" (ngModelChange)="save($event)"></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>

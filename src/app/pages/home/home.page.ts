@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { SettingsService} from '../../services/settings.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private srv: SettingsService
+  ) {}
 
 }

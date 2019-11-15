@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+
+import { SettingsService} from '../../services/settings.service';
 import { FooterComponent } from './footer.component';
 
 @NgModule({
@@ -14,6 +16,9 @@ import { FooterComponent } from './footer.component';
   ],
   exports: [
     FooterComponent
+  ],
+  providers:[
+    SettingsService
   ],
   entryComponents:[
     FooterComponent
