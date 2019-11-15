@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import { SettingsService} from '../../services/settings.service';
 
 @Component({
@@ -9,12 +10,17 @@ import { SettingsService} from '../../services/settings.service';
 export class SettingsPage {
 
   constructor(
-    private srv: SettingsService
+    private srv: SettingsService,
+    private router: Router
   ) {
     
   }
 
   save(){
     this.srv.update();
+  }
+
+  gotoPage(page: string){
+    this.router.navigate(['/'+ page]);
   }
 }

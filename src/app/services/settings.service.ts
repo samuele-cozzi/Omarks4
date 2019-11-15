@@ -18,6 +18,8 @@ export class SettingsService {
 
   private uid: string;
   public photo_url:string;
+  public displayName:string;
+  public email:string;
 
   private userSettingsCollection: AngularFirestoreCollection<Settings>;
   private settingsDoc: AngularFirestoreDocument<Settings>;
@@ -33,7 +35,10 @@ export class SettingsService {
   ) { 
     
     this.uid = this.firebaseApp.auth().currentUser.uid;
-    this. photo_url = this.firebaseApp.auth().currentUser.photoURL;
+    this.photo_url = this.firebaseApp.auth().currentUser.photoURL;
+    this.displayName = this.firebaseApp.auth().currentUser.displayName;
+    this.email = this.firebaseApp.auth().currentUser.email;
+
 
     this.userSettingsCollection = this.afs.collection('settings');
     this.settingsDoc = this.userSettingsCollection.doc(this.uid);   

@@ -7,8 +7,48 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list *ngIf="srv.settings">
+<ion-content *ngIf="srv.settings">
+  <ion-list >
+    <ion-item (click)="gotoPage('login')">
+      <ion-avatar slot="start">
+        <img [src]="srv.photo_url">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{srv.displayName}}</h2>
+        <p>{{srv.email}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Algolia Settings
+    </ion-list-header>
+    <ion-item lines="full">
+        <ion-icon slot="start" name="create"></ion-icon>
+      <ion-label>Edit Index</ion-label>
+      <ion-toggle [(ngModel)]="srv.settings.algoliaEditIndex" (ngModelChange)="save($event)" slot="end"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Application Id</ion-label>
+      <ion-input type="text" [(ngModel)]='srv.settings.algoliaApplicationId' required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Index</ion-label>
+      <ion-input type="text" [(ngModel)]='srv.settings.algoliaIndex' required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Api Key</ion-label>
+      <ion-input type="password" [(ngModel)]='srv.settings.algoliaApiKey' required>
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      App Settings
+    </ion-list-header>
     <ion-item lines="full">
       <ion-icon slot="start" name="moon"></ion-icon>
       <ion-label>
@@ -16,9 +56,9 @@
       </ion-label>
       <ion-toggle [(ngModel)]="srv.settings.dark" (ngModelChange)="save($event)" slot="end"></ion-toggle>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>Default Label</ion-label>
       <ion-input [(ngModel)]="srv.settings.text" (ngModelChange)="save($event)"></ion-input>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
 </ion-content>
