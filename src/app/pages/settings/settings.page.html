@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="srv.settings">
-  <ion-list >
+<ion-content *ngIf="srv.settings" fullscreen>
+  <ion-list>
     <ion-item (click)="gotoPage('login')">
       <ion-avatar slot="start">
         <img [src]="srv.photo_url">
@@ -24,7 +24,7 @@
       Algolia Settings
     </ion-list-header>
     <ion-item lines="full">
-        <ion-icon slot="start" name="create"></ion-icon>
+      <ion-icon slot="start" name="create"></ion-icon>
       <ion-label>Edit Index</ion-label>
       <ion-toggle [(ngModel)]="srv.settings.algoliaEditIndex" (ngModelChange)="save($event)" slot="end"></ion-toggle>
     </ion-item>
@@ -60,5 +60,53 @@
       <ion-label>Default Label</ion-label>
       <ion-input [(ngModel)]="srv.settings.text" (ngModelChange)="save($event)"></ion-input>
     </ion-item> -->
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+        <ion-icon name="reorder" ></ion-icon>
+      <h2>Dashboard Items</h2>
+      
+    </ion-list-header>
+    <ion-item lines="full">
+      <ion-icon slot="start" name="reorder"></ion-icon>
+      <ion-label>
+        Toggle Reorder
+      </ion-label>
+      <ion-toggle [(ngModel)]="srv.settings.enableReorder" (ngModelChange)="save($event)" slot="end"></ion-toggle>
+      
+    </ion-item>
+    <ion-reorder-group id="reorder" [disabled]="!srv.settings.enableReorder" (ionItemReorder)="doReorder($event)">
+      <ion-item>
+        <ion-label>
+          Item 1
+        </ion-label>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          Item 2
+        </ion-label>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          Item 3
+        </ion-label>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          Item 4
+        </ion-label>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+      <ion-item>
+          <ion-button expand="full" (click)="gotoPage('dashboard-item')">Add Item</ion-button>
+      </ion-item>
+    </ion-reorder-group>
   </ion-list>
 </ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{item.given_title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+<ion-content padding class="edit_item_dashboard" fullscreen>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="item.given_title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Url</ion-label>
+      <ion-input type="text" [(ngModel)]="item.given_url"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Avatar</ion-label>
+      <ion-input type="text" [(ngModel)]="item.avatar"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Picture</ion-label>
+      <ion-input type="text" [(ngModel)]="item.image_src"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Description</ion-label>
+      <ion-textarea rows="6" [(ngModel)]="item.excerpt"></ion-textarea>
+    </ion-item>
+<!-- 
+    <ion-item>
+      <ion-label stacked>Dashboard Ranking</ion-label>
+      <ion-input type="number" [(ngModel)]="item.dashboard_ranking"></ion-input>
+    </ion-item> -->
+
+  </ion-list>
+
+  <!-- <div padding>
+    <button ion-button primary block (click)="save()">Save</button>
+    <button ion-button rimary block (click)="delete()">Delete</button>
+  </div> -->
+</ion-content>

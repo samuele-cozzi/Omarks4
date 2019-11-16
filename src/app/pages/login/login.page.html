@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
     <ngx-auth-firebaseui [providers]="[providers.Google, providers.Microsoft]" 
       (onSuccess)="loggedIn($event)"
       (onError)="loggedError($event)"
