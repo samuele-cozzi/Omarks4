@@ -6,6 +6,7 @@ export class Item {
     given_url: string;
     image_src: string;
     excerpt: string;
+    index: bigint;
     createdAt: Timestamp;
     modifiedAt: Timestamp;
 }

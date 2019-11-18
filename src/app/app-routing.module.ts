@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule), canActivate: [LoggedInGuard] },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule', canActivate: [LoggedInGuard] },
-  { path: 'dashboard-item', loadChildren: './pages/dashboard-item/dashboard-item.module#DashboardItemPageModule', canActivate: [LoggedInGuard] },
+  { path: 'dashboard-item/:id', loadChildren: './pages/dashboard-item/dashboard-item.module#DashboardItemPageModule', canActivate: [LoggedInGuard] },
 
 
 

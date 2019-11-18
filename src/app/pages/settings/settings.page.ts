@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import { SettingsService} from '../../services/settings.service';
+import { DashboardService } from '../../services/dashboard.service';
+import { Item } from 'src/app/shared/item.model';
 
 @Component({
   selector: 'app-settings',
@@ -11,20 +13,26 @@ export class SettingsPage {
 
   constructor(
     private srv: SettingsService,
+    private srvDashboard: DashboardService,
     private router: Router
   ) {
-    
   }
 
-  save(){
+  save() {
     this.srv.update();
   }
 
-  gotoPage(page: string){
-    this.router.navigate(['/'+ page]);
+  gotoPage(page: string) {
+    this.router.navigate(['/' + page]);
   }
 
-  //items = [1, 2, 3, 4, 5];
+  async addDashboardItem() {
+    const item_id = await this.srvDashboard.add(10);
+    console.log(item_id);
+    this.router.navigate(['/dashboard-item', item_id]);
+  }
+
+  // items = [1, 2, 3, 4, 5];
 
   doReorder(ev: any) {
 
@@ -43,6 +51,4 @@ export class SettingsPage {
     // // After complete is called the items will be in the new order
     // console.log('After complete', this.items);
   }
-
-  
 }

@@ -17,23 +17,19 @@ import { Settings } from '../shared/settings.model';
 export class SettingsService {
 
   private uid: string;
-  public photo_url:string;
-  public displayName:string;
-  public email:string;
+  public photo_url: string;
+  public displayName: string;
+  public email: string;
 
   private userSettingsCollection: AngularFirestoreCollection<Settings>;
   private settingsDoc: AngularFirestoreDocument<Settings>;
   private settings$: Observable<Settings>;
   public settings: Settings;
 
-
-  
-
   constructor(
     private afs: AngularFirestore,
     private firebaseApp: FirebaseApp
-  ) { 
-    
+  ) {
     this.uid = this.firebaseApp.auth().currentUser.uid;
     this.photo_url = this.firebaseApp.auth().currentUser.photoURL;
     this.displayName = this.firebaseApp.auth().currentUser.displayName;
@@ -41,16 +37,14 @@ export class SettingsService {
 
 
     this.userSettingsCollection = this.afs.collection('settings');
-    this.settingsDoc = this.userSettingsCollection.doc(this.uid);   
+    this.settingsDoc = this.userSettingsCollection.doc(this.uid);
     this.settings$ = this.settingsDoc.valueChanges();
 
-    this.settings$.subscribe((val : Settings) => {
-      if(!val){
+    this.settings$.subscribe((val: Settings) => {
+      if (!val) {
         let _settings = new Settings();
         this.settingsDoc.set(Object.assign({},_settings));
-      }
-      else
-      {
+      } else {
         this.settings = val;
 
         document.body.classList.toggle('dark', this.settings.dark);
@@ -63,7 +57,7 @@ export class SettingsService {
   }
 
   get timestamp() {
-    //return this.afs.firestore.FieldValue.serverTimestamp();
+    // return this.afs.firestore.FieldValue.serverTimestamp();
     return '';
   }
 }

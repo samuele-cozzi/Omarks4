@@ -3,38 +3,38 @@
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-      <ion-title>{{item.given_title}}</ion-title>
+      <ion-title *ngIf="srv.item">{{srv.item.given_title}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
 
 
-<ion-content padding class="edit_item_dashboard" fullscreen>
+<ion-content class="ion-padding" class="edit_item_dashboard" fullscreen *ngIf="srv.item">
   <ion-list>
 
     <ion-item>
       <ion-label stacked>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="item.given_title"></ion-input>
+      <ion-input type="text" [(ngModel)]="srv.item.given_title" (ngModelChange)="save($event)"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Url</ion-label>
-      <ion-input type="text" [(ngModel)]="item.given_url"></ion-input>
+      <ion-input type="text" [(ngModel)]="srv.item.given_url" (ngModelChange)="save($event)"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Avatar</ion-label>
-      <ion-input type="text" [(ngModel)]="item.avatar"></ion-input>
+      <ion-input type="text" [(ngModel)]="srv.item.avatar" (ngModelChange)="save($event)"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Picture</ion-label>
-      <ion-input type="text" [(ngModel)]="item.image_src"></ion-input>
+      <ion-input type="text" [(ngModel)]="srv.item.image_src" (ngModelChange)="save($event)"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Description</ion-label>
-      <ion-textarea rows="6" [(ngModel)]="item.excerpt"></ion-textarea>
+      <ion-textarea rows="6" [(ngModel)]="srv.item.excerpt" (ngModelChange)="save($event)"></ion-textarea>
     </ion-item>
 <!-- 
     <ion-item>

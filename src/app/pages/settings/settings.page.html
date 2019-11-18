@@ -21,7 +21,7 @@
   </ion-list>
   <ion-list>
     <ion-list-header>
-      Algolia Settings
+      <h3>Algolia Settings</h3>
     </ion-list-header>
     <ion-item lines="full">
       <ion-icon slot="start" name="create"></ion-icon>
@@ -47,7 +47,7 @@
 
   <ion-list>
     <ion-list-header>
-      App Settings
+      <h3>App Settings</h3>
     </ion-list-header>
     <ion-item lines="full">
       <ion-icon slot="start" name="moon"></ion-icon>
@@ -64,11 +64,9 @@
 
   <ion-list>
     <ion-list-header>
-        <ion-icon name="reorder" ></ion-icon>
-      <h2>Dashboard Items</h2>
-      
+      <h3>Dashboard Items</h3>
     </ion-list-header>
-    <ion-item lines="full">
+    <ion-item lines="full" >
       <ion-icon slot="start" name="reorder"></ion-icon>
       <ion-label>
         Toggle Reorder
@@ -76,37 +74,22 @@
       <ion-toggle [(ngModel)]="srv.settings.enableReorder" (ngModelChange)="save($event)" slot="end"></ion-toggle>
       
     </ion-item>
-    <ion-reorder-group id="reorder" [disabled]="!srv.settings.enableReorder" (ionItemReorder)="doReorder($event)">
+    <ion-reorder-group id="reorder" 
+      *ngFor="let item of srvDashboard.items"
+      [disabled]="!srv.settings.enableReorder" 
+      (ionItemReorder)="doReorder($event)">
       <ion-item>
         <ion-label>
           Item 1
         </ion-label>
-        <ion-reorder slot="end"></ion-reorder>
+        <ion-reorder slot="start"></ion-reorder>
       </ion-item>
 
-      <ion-item>
-        <ion-label>
-          Item 2
-        </ion-label>
-        <ion-reorder slot="end"></ion-reorder>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>
-          Item 3
-        </ion-label>
-        <ion-reorder slot="end"></ion-reorder>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>
-          Item 4
-        </ion-label>
-        <ion-reorder slot="end"></ion-reorder>
-      </ion-item>
-      <ion-item>
-          <ion-button expand="full" (click)="gotoPage('dashboard-item')">Add Item</ion-button>
-      </ion-item>
+     
+      
     </ion-reorder-group>
+    <ion-item>
+      <ion-button expand="full" (click)="addDashboardItem($event)">Add Item</ion-button>
+  </ion-item>
   </ion-list>
 </ion-content>
