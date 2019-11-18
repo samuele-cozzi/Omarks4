@@ -75,14 +75,22 @@
       
     </ion-item>
     <ion-reorder-group id="reorder" 
-      *ngFor="let item of srvDashboard.items"
       [disabled]="!srv.settings.enableReorder" 
       (ionItemReorder)="doReorder($event)">
-      <ion-item>
+      <ion-item *ngFor="let item of srvDashboard.items">
+          <ion-reorder slot="start"></ion-reorder>
         <ion-label>
-          Item 1
+          {{item.given_title}}
         </ion-label>
-        <ion-reorder slot="start"></ion-reorder>
+        <ion-buttons slot="end">
+          <ion-button (click) ="gotoItem('dashboard-item', item.id)" >
+            <ion-icon slot="icon-only" name="create"></ion-icon>
+          </ion-button>
+          <ion-button (click) ="deleteDashboardItem(item.id)" >
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        
       </ion-item>
 
      

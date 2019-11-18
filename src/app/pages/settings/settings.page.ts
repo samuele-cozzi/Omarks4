@@ -26,10 +26,17 @@ export class SettingsPage {
     this.router.navigate(['/' + page]);
   }
 
+  gotoItem(page: string, id: string){
+    this.router.navigate(['/' + page, id]);
+  }
+
   async addDashboardItem() {
-    const item_id = await this.srvDashboard.add(10);
-    console.log(item_id);
-    this.router.navigate(['/dashboard-item', item_id]);
+    const item_id = await this.srvDashboard.add(this.srvDashboard.items.length);
+    this.gotoItem('dashboard-item', item_id)
+  }
+
+  async deleteDashboardItem(_id: string){
+    this.srvDashboard.delete(_id);
   }
 
   // items = [1, 2, 3, 4, 5];
@@ -37,6 +44,9 @@ export class SettingsPage {
   doReorder(ev: any) {
 
     console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+    this.srvDashboard.items[ev.detail.from].index = ev.detail.to;
+    this.srvDashboard.items[ev.detail.to].index = ev.detail.from;
+
     ev.detail.complete();
 
     // // Before complete is called with the items they will remain in the
