@@ -74,8 +74,12 @@ export class DashboardService {
         return doc_ref.id;
     }
 
-    update() {
-        this.itemsDoc.set(this.item, { merge: true });
+    update(_item?: Item) {
+        if (_item == null) {
+            this.itemsDoc.set(this.item, { merge: true });
+        } else {
+            this.DashboardCollection.doc(_item.id).set(_item, {merge: true});
+        }
     }
 
     delete(_id) {

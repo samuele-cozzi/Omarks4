@@ -47,6 +47,9 @@ export class SettingsPage {
     this.srvDashboard.items[ev.detail.from].index = ev.detail.to;
     this.srvDashboard.items[ev.detail.to].index = ev.detail.from;
 
+    this.srvDashboard.update(this.srvDashboard.items[ev.detail.from]);
+    this.srvDashboard.update(this.srvDashboard.items[ev.detail.to]);
+
     ev.detail.complete();
 
     // // Before complete is called with the items they will remain in the
