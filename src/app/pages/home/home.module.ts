@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { FooterComponentModule } from '../../components/footer/footer.module';
+import { AppsComponentModule } from '../../components/apps/apps.module'
 import { SettingsService} from '../../services/settings.service';
 
 import { HomePage } from './home.page';
@@ -15,6 +16,7 @@ import { HomePage } from './home.page';
     FormsModule,
     IonicModule,
     FooterComponentModule,
+    AppsComponentModule,
     RouterModule.forChild([
       {
         path: '',

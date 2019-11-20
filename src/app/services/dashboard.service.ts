@@ -24,6 +24,7 @@ export class DashboardService {
     private itemsDoc: AngularFirestoreDocument<Item>;
     public items: Item[];
     public item: Item;
+    public itemRows: Item[][];
 
     constructor(
         private afs: AngularFirestore,
@@ -34,8 +35,6 @@ export class DashboardService {
 
         this.DashboardCollection = this.afs.collection<Item>('settings/' + this.uid + '/dashboard', ref => ref.orderBy('index'));
         let items$: Observable<Item[]>;
-        //let items$ :Observable<DocumentChangeAction<Item>[]>;
-        //this.items$ = this.DashboardCollection.valueChanges();
 
         //this.DashboardCollection.snapshotChanges().subscribe(res => this.items = res);
         items$ = this.DashboardCollection.snapshotChanges().pipe(
@@ -43,8 +42,6 @@ export class DashboardService {
                 return actions.map((a: DocumentChangeAction<Item>) => {
                     let data: Item = a.payload.doc.data() as Item;
                     data.id = a.payload.doc.id
-                    //const id = a.payload.doc.id;
-                    //return { id, ...data };
                     return data;
                 });
             })
@@ -52,6 +49,18 @@ export class DashboardService {
 
         items$.subscribe((val: Item[]) => {
             this.items = val
+
+            this.itemRows = new Array<Item[]>();
+            for (let _i = 0; _i < this.items.length; _i = _i + 12 )
+            {
+                let _row: Item[] = new Array<Item>();
+
+                for (let _j = 0; ( _j < 12 && _j < ( (_i * 12) + this.items.length ) ); _j++) {
+                    _row.push( this.items[(_i * 12) + _j] );
+                }
+
+                this.itemRows.push(_row);
+            }
         });
     }
 
