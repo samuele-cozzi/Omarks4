@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Search} from '../../services/search.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,7 +10,7 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor(
-    
+    private srv: Search
   ) {}
   
   

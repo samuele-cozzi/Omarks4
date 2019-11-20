@@ -7,7 +7,8 @@
 </ion-header> -->
 
 <ion-content fullscreen>
-  <app-apps></app-apps>
+  <app-search *ngIf="srv.searching"></app-search>
+  <app-apps *ngIf="!srv.searching"></app-apps>
 </ion-content>
 
 

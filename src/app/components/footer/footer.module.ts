@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
-import { SettingsService} from '../../services/settings.service';
+import { Search} from '../../services/search.service';
 import { FooterComponent } from './footer.component';
 
 @NgModule({
@@ -18,10 +18,11 @@ import { FooterComponent } from './footer.component';
     FooterComponent
   ],
   providers:[
-    SettingsService
+    Search
   ],
   entryComponents:[
-    FooterComponent
+    FooterComponent,
+    
   ]
 })
 export class FooterComponentModule {}

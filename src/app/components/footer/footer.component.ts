@@ -1,9 +1,8 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
-import { IonSearchbar, IonInput, IonButton} from '@ionic/angular';
+import { IonSearchbar, IonInput, PopoverController } from '@ionic/angular';
 import { Router } from "@angular/router";
-import { LinkMenuItem } from 'ngx-auth-firebaseui';
 
-import { SettingsService } from '../../services/settings.service';
+import { Search } from '../../services/search.service';
 
 @Component({
   selector: 'app-footer',
@@ -17,7 +16,7 @@ export class FooterComponent {
   keyEvent(event: KeyboardEvent) {
     //console.log(event);
     if (event.key == 'Enter' && event.isTrusted && event.ctrlKey) {
-      if(this.searchFocused){
+      if(this.srv.searching){
         this.hidden.setFocus();
       }
       else
@@ -27,31 +26,29 @@ export class FooterComponent {
     }
   }
 
-  private searchFocused = false;
 
   constructor(
     private router: Router,
-    private settings: SettingsService
+    private srv: Search,
+    public modalController: PopoverController 
   ) { }
 
   gotoPage(page: string) {
     this.router.navigate(['/' + page]);
   }
 
-  searchFocus(event) {
-    this.searchFocused = true;
-    console.log("focus");
+  async searchFocus(event) {
+    this.srv.searching = true;
   }
 
-  searchLostFocus(event) {
-    this.searchFocused = false;
-    console.log("lost focus");
+  async searchLostFocus(event) {
+    this.search.value = "";
+    this.srv.searching = false;
   }
 
   searchFilter(event) {
     const searchTerm = event.srcElement.value;
-
-    console.log(searchTerm);
+    this.srv.query = searchTerm;
   }
 
 }

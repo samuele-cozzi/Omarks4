@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { FooterComponentModule } from '../../components/footer/footer.module';
-import { AppsComponentModule } from '../../components/apps/apps.module'
-import { SettingsService} from '../../services/settings.service';
+import { AppsComponentModule } from '../../components/apps/apps.module';
+import { SearchComponentModule } from '../../components/search/search.module';
+import { Search } from '../../services/search.service';
 
 import { HomePage } from './home.page';
 
@@ -17,6 +18,7 @@ import { HomePage } from './home.page';
     IonicModule,
     FooterComponentModule,
     AppsComponentModule,
+    SearchComponentModule,
     RouterModule.forChild([
       {
         path: '',
@@ -25,7 +27,7 @@ import { HomePage } from './home.page';
     ])
   ],
   providers:[
-    SettingsService
+    Search
   ],
   declarations: [HomePage]
 })
