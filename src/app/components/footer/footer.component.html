@@ -7,9 +7,8 @@
     </ion-buttons>
     <ion-searchbar #search showCancelButton="focus"
       (ionFocus)="searchFocus($event)" 
-      (ionBlur)="searchLostFocus($event)" 
+      (ionCancel)="searchCancel($event)" 
       (ionInput)="searchFilter($event)"></ion-searchbar>
-    <ion-input #hidden class="hidden"></ion-input>
     <ion-buttons slot="primary">
       <ion-button>
         <ion-icon slot="icon-only" name="more"></ion-icon>

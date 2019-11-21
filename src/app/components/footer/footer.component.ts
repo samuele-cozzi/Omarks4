@@ -11,16 +11,16 @@ import { Search } from '../../services/search.service';
 })
 export class FooterComponent {
   @ViewChild('search', {static: false}) search : IonSearchbar;
-  @ViewChild('hidden', {static: false}) hidden : IonInput;
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     //console.log(event);
     if (event.key == 'Enter' && event.isTrusted && event.ctrlKey) {
       if(this.srv.searching){
-        this.hidden.setFocus();
+        this.searchCancel(event);
       }
       else
       {
+        this.srv.searching = true;
         this.search.setFocus();
       }
     }
@@ -41,7 +41,7 @@ export class FooterComponent {
     this.srv.searching = true;
   }
 
-  async searchLostFocus(event) {
+  async searchCancel(event) {
     this.search.value = "";
     this.srv.searching = false;
   }
