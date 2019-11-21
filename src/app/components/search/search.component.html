@@ -1,3 +1,11 @@
 <p>
   searching : {{srv.query}}
 </p>
+
+<ion-list *ngIf="srv.searchFacets && srv.query.length == 0">
+    <ion-item *ngFor="let facet of srv.searchFacets" (click)="getSearchFacets(facet.key, facet.value)">
+      <ion-icon name="folder" slot="start"></ion-icon>
+      <ion-label>{{facet.value}}</ion-label>
+      <ion-badge slot="end">{{facet.count}}</ion-badge>
+    </ion-item>
+  </ion-list>

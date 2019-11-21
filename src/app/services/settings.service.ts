@@ -35,7 +35,6 @@ export class SettingsService {
     this.displayName = this.firebaseApp.auth().currentUser.displayName;
     this.email = this.firebaseApp.auth().currentUser.email;
 
-
     this.userSettingsCollection = this.afs.collection('settings');
     this.settingsDoc = this.userSettingsCollection.doc(this.uid);
     this.settings$ = this.settingsDoc.valueChanges();

@@ -13,6 +13,8 @@ export class SearchComponent implements OnInit {
     private srv: Search
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.srv.get_facets();
+  }
 
 }

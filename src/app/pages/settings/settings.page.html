@@ -30,17 +30,17 @@
     </ion-item>
     <ion-item>
       <ion-label>Application Id</ion-label>
-      <ion-input type="text" [(ngModel)]='srv.settings.algoliaApplicationId' required></ion-input>
+      <ion-input type="text" [(ngModel)]='srv.settings.algoliaApplicationId' (ngModelChange)="save($event)" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Index</ion-label>
-      <ion-input type="text" [(ngModel)]='srv.settings.algoliaIndex' required></ion-input>
+      <ion-input type="text" [(ngModel)]='srv.settings.algoliaIndex' (ngModelChange)="save($event)" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Api Key</ion-label>
-      <ion-input type="password" [(ngModel)]='srv.settings.algoliaApiKey' required>
+      <ion-input type="password" [(ngModel)]='srv.settings.algoliaApiKey' (ngModelChange)="save($event)" required>
       </ion-input>
     </ion-item>
   </ion-list>

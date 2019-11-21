@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { SettingsService} from '../../services/settings.service';
 import { DashboardService } from '../../services/dashboard.service';
-import { Item } from 'src/app/shared/item.model';
 
 @Component({
   selector: 'app-settings',
