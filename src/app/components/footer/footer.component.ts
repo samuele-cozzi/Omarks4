@@ -24,6 +24,11 @@ export class FooterComponent {
         this.search.setFocus();
       }
     }
+    if (event.key == 'Enter' && event.isTrusted && !event.ctrlKey) {
+      if (this.srv.searchItems.length > 0) {
+        this.open(this.srv.searchItems[0], null);
+      }
+    }
   }
 
 
@@ -50,6 +55,13 @@ export class FooterComponent {
     const searchTerm = event.srcElement.value;
     this.srv.query = searchTerm;
     this.srv.get_query(searchTerm);
+  }
+
+  open(item, event) {
+    typeof item.time_read == "string" && (item.time_read = 0);
+    item.time_read++;
+    this.srv.save_item(item);
+    window.open(item.given_url)
   }
 
 }
