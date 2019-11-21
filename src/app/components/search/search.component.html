@@ -1,11 +1,66 @@
 <p>
-  searching : {{srv.query}}
+  searching : {{srv.query}} ({{srv.searchFacets.length}}) ({{srv.query.length}})
+
 </p>
 
-<ion-list *ngIf="srv.searchFacets && srv.query.length == 0">
-    <ion-item *ngFor="let facet of srv.searchFacets" (click)="getSearchFacets(facet.key, facet.value)">
-      <ion-icon name="folder" slot="start"></ion-icon>
-      <ion-label>{{facet.value}}</ion-label>
-      <ion-badge slot="end">{{facet.count}}</ion-badge>
-    </ion-item>
-  </ion-list>
+<ion-list *ngIf="srv.searchFacets.length > 0">
+  <ion-item *ngFor="let facet of srv.searchFacets" (click)="getSearchFacets(facet.key, facet.value)">
+    <ion-icon name="folder" slot="start"></ion-icon>
+    <ion-label>{{facet.value}}</ion-label>
+    <ion-badge slot="end">{{facet.count}}</ion-badge>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="srv.searchFacets.length == 0 && srv.query.length == 0">
+  <ion-item *ngFor="let item of srv.searchItems" (click)="open(item, $event)">
+    <ion-avatar slot="start">
+      <img *ngIf="item?.has_image == 0"
+        src="https://api.faviconkit.com/{{item.given_url?.split('/')[2]}}/144" />
+
+      <img *ngIf="item?.has_image == 1" src="{{item?.image?.src}}" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{item.given_title}}</h2>
+      <h4>{{item.given_url}}</h4>
+      <p>{{item.excerpt}}</p>
+      <p>
+        <ion-chip *ngFor="let tag of item?.tags | split">
+          <ion-label>{{tag}}</ion-label>
+        </ion-chip>
+
+      </p>
+    </ion-label>
+  </ion-item>
+
+</ion-list>
+
+
+<ion-list >
+    
+  <ion-item *ngFor="let item of srv.searchItems" (click)="open(item, $event)">
+    <ion-avatar slot="start">
+      <img *ngIf="item?.has_image == 0"
+        src="https://api.faviconkit.com/{{item.given_url?.split('/')[2]}}/144" />
+
+      <img *ngIf="item?.has_image == 1" src="{{item?.image?.src}}" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{item.given_title}}</h2>
+      <h4>{{item.given_url}}</h4>
+      <p>{{item.excerpt}}</p>
+      <p>
+        <ion-chip *ngFor="let tag of item?.tags | split">
+          <ion-label>{{tag}}</ion-label>
+        </ion-chip>
+
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-infinite-scroll *ngIf="srv.searchFacets.length == 0" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

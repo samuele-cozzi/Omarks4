@@ -49,6 +49,7 @@ export class FooterComponent {
   searchFilter(event) {
     const searchTerm = event.srcElement.value;
     this.srv.query = searchTerm;
+    this.srv.get_query(searchTerm);
   }
 
 }

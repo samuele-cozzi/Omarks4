@@ -17,6 +17,10 @@ export class Search {
 
     private service_url: string = "";
     private headers: HttpHeaders;
+    private page = 0;
+    private hitsPerPage = 20;
+    private facet_key = "";
+    private facet_value = "";
 
     constructor(
         private http: HttpClient,
@@ -45,7 +49,7 @@ export class Search {
         return Promise.reject(error.message || error);
     }
 
-    public async get_facets(): Promise<any> {
+    public async get_facets() {
         if(this.searchFacets.length > 0){
             return;
         }
@@ -69,50 +73,89 @@ export class Search {
         });
     }
 
-    // public get_filtered_facets(key: string, value: string, hitsPerPage: number = 20, page: number = 0): Promise<any> {
-    //     this.init();
+    public get_filtered_facets(key: string, value: string, hitsPerPage: number = 20, page: number = 0) {
 
-    //     let body = {
-    //         "facetFilters": key + ':' + value,
-    //         "hitsPerPage": hitsPerPage,
-    //         "page": page
-    //     }
+        this.searchFacets = [];
+        this.facet_key = key;
+        this.facet_value = value;
+
+        if (page == 0){
+            this.page = 0;
+            this.searchItems = [];
+        }
+
+        let body = {
+            "facetFilters": key + ':' + value,
+            "hitsPerPage": hitsPerPage,
+            "page": page
+        }
+
+        this.http.post(this.service_url + '/query', body, { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                for(let i = 0; i < response['hits'].length; i++){
+                    this.searchItems.push(response['hits'][i]);
+                }
+                console.log(this.searchItems);
+            })
+            .catch(this.handleError);
+    }
+
+    public get_query(query: string, hitsPerPage: number = 20, page: number = 0): Promise<any> {
+        
+        this.init();
+        this.searchFacets = [];
+
+        if (page == 0){
+            this.page = 0;
+            this.searchItems = [];
+        }
+
+        let body = {
+            "query": query,
+            "hitsPerPage": hitsPerPage,
+            "page": page
+        }
+
+        return this.http.post(this.service_url + '/query', body, { headers: this.headers })
+            .toPromise()
+            .then((response) => {
+                console.log(response);
+
+                for(let i = 0; i < response['hits'].length; i++){
+                    this.searchItems.push(response['hits'][i]);
+                }
+                console.log(this.searchItems);
+            })
+            .catch(this.handleError);
+    }
+
+    public load_more()
+    {
+        this.page++;
+        if (this.query.length > 0){
+            this.get_query(this.query, this.hitsPerPage, this.page);
+        }
+        else {
+            this.get_filtered_facets(this.facet_key, this.facet_value, this.hitsPerPage, this.page);
+        }
+    }
+
+    public async save_item(item) {
+
+        this.http.post(this.service_url, item, { headers: this.headers })
+            .toPromise()
+            .then(response => response['hits'])
+            .catch(this.handleError);
+    }
+
+    public async delete_item(item) {
+
+        return this.http.delete(this.service_url + '/' + item.objectID, { headers: this.headers })
+            .toPromise()
+            .then(response => response['hits'])
+            .catch(this.handleError);
+    }
 
 
-    //     return this.http.post(this.service_url + '/query', body, { headers: this.headers })
-    //         .toPromise()
-    //         .then(response => response.json().hits)
-    //         .catch(this.handleError);
-    // }
-
-    // public get_query(query: string, hitsPerPage: number = 20, page: number = 0): Promise<any> {
-    //     this.init();
-
-    //     let body = {
-    //         "query": query,
-    //         "hitsPerPage": hitsPerPage,
-    //         "page": page
-    //     }
-
-    //     return this.http.post(this.service_url + '/query', body, { headers: this.headers })
-    //         .toPromise()
-    //         .then(response => response.json().hits)
-    //         .catch(this.handleError);
-    // }
-
-    // public save_item(item): Promise<any> {
-
-    //     return this.http.post(this.service_url, item, { headers: this.headers })
-    //         .toPromise()
-    //         .then(response => response.json().hits)
-    //         .catch(this.handleError);
-    // }
-
-    // public delete_item(item): Promise<any> {
-
-    //     return this.http.delete(this.service_url + '/' + item.objectID, { headers: this.headers })
-    //         .toPromise()
-    //         .then(response => response.json())
-    //         .catch(this.handleError);
-    // }
 }
