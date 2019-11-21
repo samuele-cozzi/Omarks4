@@ -11,13 +11,13 @@ import { DashboardService } from '../../services/dashboard.service';
 export class SettingsPage {
 
   constructor(
-    private srv: SettingsService,
-    private srvDashboard: DashboardService,
+    public srv: SettingsService,
+    public srvDashboard: DashboardService,
     private router: Router
   ) {
   }
 
-  save() {
+  save(event) {
     this.srv.update();
   }
 
@@ -29,7 +29,7 @@ export class SettingsPage {
     this.router.navigate(['/' + page, id]);
   }
 
-  async addDashboardItem() {
+  async addDashboardItem(event) {
     const item_id = await this.srvDashboard.add(this.srvDashboard.items.length);
     this.gotoItem('dashboard-item', item_id)
   }

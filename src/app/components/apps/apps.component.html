@@ -1,14 +1,14 @@
 <ion-grid *ngIf="srv.itemRows">
   <ion-row *ngFor="let _row of srv.itemRows">
-    <ion-col *ngFor="let _item of _row" size-xs="12" size-sm="6" size-md="3" size-lg="2">
+    <ion-col *ngFor="let _item of _row" size-xs="4" size-sm="3" size-md="3" size-lg="2">
       <ion-card (click)="open(_item, $event)">
         <img *ngIf="_item.avatar" src="{{_item.avatar}}" />
         <img *ngIf="!_item.avatar" src="https://api.faviconkit.com/{{_item.given_url?.split('/')[2]}}/144" />
 
         <div class="card-subtitle"></div>
         <div class="card-title"></div>
-        <ion-card-subtitle>{{_item.given_url?.split("/")[2]}}</ion-card-subtitle>
-        <ion-card-title>{{_item.given_title}}</ion-card-title>
+        <ion-card-subtitle *ngIf="_item.show_subtitle">{{_item.given_url?.split("/")[2]}}</ion-card-subtitle>
+        <ion-card-title *ngIf="_item.show_title">{{_item.given_title}}</ion-card-title>
       </ion-card>
     </ion-col>
   </ion-row>

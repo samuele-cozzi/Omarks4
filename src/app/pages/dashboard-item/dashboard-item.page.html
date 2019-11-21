@@ -36,6 +36,20 @@
       <ion-label stacked>Description</ion-label>
       <ion-textarea rows="6" [(ngModel)]="srv.item.excerpt" (ngModelChange)="save($event)"></ion-textarea>
     </ion-item>
+
+    <ion-item>
+        <ion-label>
+          Show Title
+        </ion-label>
+        <ion-toggle [(ngModel)]="srv.item.show_title" (ngModelChange)="save($event)" slot="end"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>
+            Show Subtitle
+          </ion-label>
+          <ion-toggle [(ngModel)]="srv.item.show_subtitle" (ngModelChange)="save($event)" slot="end"></ion-toggle>
+        </ion-item>
 <!-- 
     <ion-item>
       <ion-label stacked>Dashboard Ranking</ion-label>

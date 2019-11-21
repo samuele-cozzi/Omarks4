@@ -7,6 +7,9 @@ export class Item {
     image_src: string;
     excerpt: string;
     index: bigint;
+    show_title: boolean;
+    show_subtitle: boolean;
+    avatar: string;
     createdAt: Timestamp;
     modifiedAt: Timestamp;
 }

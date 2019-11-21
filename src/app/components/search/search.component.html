@@ -1,7 +1,7 @@
-<p>
+<!-- <p>
   searching : {{srv.query}} ({{srv.searchFacets.length}}) ({{srv.query.length}})
 
-</p>
+</p> -->
 
 <ion-list *ngIf="srv.searchFacets.length > 0">
   <ion-item *ngFor="let facet of srv.searchFacets" (click)="getSearchFacets(facet.key, facet.value)">

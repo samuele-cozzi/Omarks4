@@ -7,6 +7,8 @@ export class Settings {
     algoliaApiKey: string;
     algoliaApplicationId: string;
     algoliaIndex: string;
+    algoliaEditIndex: boolean;
+    enableReorder: boolean;
     createdAt: Timestamp;
     modifiedAt: Timestamp;
 }

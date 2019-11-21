@@ -55,12 +55,13 @@ export class DashboardService {
             {
                 let _row: Item[] = new Array<Item>();
 
-                for (let _j = 0; ( _j < 12 && _j < ( (_i * 12) + this.items.length ) ); _j++) {
-                    _row.push( this.items[(_i * 12) + _j] );
+                for (let _j = 0; ( _j < 12 && _j < ( (_i) + this.items.length ) ); _j++) {
+                    _row.push( this.items[(_i) + _j] );
                 }
 
                 this.itemRows.push(_row);
             }
+            console.log(this.itemRows);
         });
     }
 

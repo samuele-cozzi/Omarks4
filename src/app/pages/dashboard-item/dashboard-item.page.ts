@@ -13,7 +13,7 @@ export class DashboardItemPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private srv: DashboardService
+    public srv: DashboardService
   ) { }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class DashboardItemPage implements OnInit {
     this.srv.initItem(_id);
   }
 
-  save() {
+  save(event) {
     this.srv.update();
   }
 

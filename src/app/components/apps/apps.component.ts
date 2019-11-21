@@ -10,7 +10,7 @@ import { DashboardService } from '../../services/dashboard.service';
 export class AppsComponent implements OnInit {
 
   constructor(
-    private srv: DashboardService,
+    public srv: DashboardService,
   ) { }
 
   ngOnInit() {}
