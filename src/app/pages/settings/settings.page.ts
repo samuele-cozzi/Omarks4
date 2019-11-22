@@ -43,17 +43,24 @@ export class SettingsPage {
   doReorder(ev: any) {
 
     console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
-    this.srvDashboard.items[ev.detail.from].index = ev.detail.to;
-    this.srvDashboard.items[ev.detail.to].index = ev.detail.from;
 
+    this.srvDashboard.items[ev.detail.from].index = ev.detail.to;
     this.srvDashboard.update(this.srvDashboard.items[ev.detail.from]);
-    this.srvDashboard.update(this.srvDashboard.items[ev.detail.to]);
+
+    for (let _i = ev.detail.to; _i <  this.srvDashboard.items.length; _i++ ) {
+      this.srvDashboard.items[_i].index ++;
+      this.srvDashboard.update(this.srvDashboard.items[_i]);
+    }
+    // this.srvDashboard.items[ev.detail.to].index = ev.detail.from;
+
+    // this.srvDashboard.update(this.srvDashboard.items[ev.detail.from]);
+    // this.srvDashboard.update(this.srvDashboard.items[ev.detail.to]);
 
     ev.detail.complete();
 
     // // Before complete is called with the items they will remain in the
     // // order before the drag
-    // console.log('Before complete', this.items);
+    //console.log('Before complete', this.srvDashboard.items);
 
     // // Finish the reorder and position the item in the DOM based on
     // // where the gesture ended. Update the items variable to the

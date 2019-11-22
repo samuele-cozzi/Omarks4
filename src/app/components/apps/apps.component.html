@@ -1,6 +1,6 @@
 <ion-grid *ngIf="srv.itemRows">
   <ion-row *ngFor="let _row of srv.itemRows">
-    <ion-col *ngFor="let _item of _row" size-xs="4" size-sm="3" size-md="3" size-lg="2">
+    <ion-col *ngFor="let _item of _row" size-xs="3" size-sm="3" size-md="3" size-lg="2">
       <ion-card (click)="open(_item, $event)">
         <img *ngIf="_item.avatar" src="{{_item.avatar}}" />
         <img *ngIf="!_item.avatar" src="https://api.faviconkit.com/{{_item.given_url?.split('/')[2]}}/144" />
