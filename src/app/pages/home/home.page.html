@@ -13,7 +13,6 @@
 
       </ion-col>
       <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6">
-        <app-search *ngIf="srv.searching"></app-search>
         <app-apps *ngIf="!srv.searching"></app-apps>
       </ion-col>
       <ion-col size-xs="12" size-sm="12" size-md="3" size-lg="3">
@@ -22,7 +21,7 @@
     </ion-row>
   </ion-grid>
   
-  <app-search *ngIf="mobile && srv.searching"></app-search>
+  <app-search *ngIf="srv.searching"></app-search>
   <app-apps *ngIf="mobile && !srv.searching"></app-apps>
 </ion-content>
 
