@@ -7,6 +7,11 @@ import { RouterModule } from '@angular/router';
 import { FooterComponentModule } from '../../components/footer/footer.module';
 import { AppsComponentModule } from '../../components/apps/apps.module';
 import { SearchComponentModule } from '../../components/search/search.module';
+import{ WeatherComponentModule } from '../../widgets/weather/weather.module';
+import { ClockComponentModule } from '../../widgets/clock/clock.module';
+import { ContactsComponentModule } from '../../widgets/contacts/contacts.module';
+import { AgendaComponentModule } from '../../widgets/agenda/agenda.module';
+import { MapComponentModule } from '../../widgets/map/map.module';
 import { Search } from '../../services/search.service';
 
 import { HomePage } from './home.page';
@@ -19,6 +24,11 @@ import { HomePage } from './home.page';
     FooterComponentModule,
     AppsComponentModule,
     SearchComponentModule,
+    WeatherComponentModule,
+    ClockComponentModule,
+    ContactsComponentModule,
+    AgendaComponentModule,
+    MapComponentModule,
     RouterModule.forChild([
       {
         path: '',
