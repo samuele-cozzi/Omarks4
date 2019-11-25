@@ -7,18 +7,23 @@ const app = express();
 
 const db = admin.firestore();
 
-exports.scheduled = functions.pubsub.schedule('00 1 * * *')
-  .timeZone('europe/rome') // Users can choose timezone - default is America/Los_Angeles
-  .onRun(async (context) => {
+// GET /api/messages?category={category}
+// Get all messages, optionally specifying a category to filter on
+app.get('/api/weather', async (req, res) => {
+    //const category = req.query.category;
+    //let query = db.collection(`/messages`);
+
     try {
 
         const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?q=Nerviano&units=metric&APPID=b985e8aece721f240b9c9871cf128c09');
         const data = response.data;
         console.log(data);
         
+        res.status(200).json(data);
     } catch (error) {
         console.log('Error getting messages', error.message);
+        res.sendStatus(500);
     }
-    console.log('scheduledWeather run');
-  return null;
 });
+
+exports.api = functions.https.onRequest(app);
