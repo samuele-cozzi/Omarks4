@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatetimeChangeEventDetail } from '@ionic/core';
-import { Time } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-clock',
@@ -9,19 +8,22 @@ import { Time } from '@angular/common';
 })
 export class ClockComponent implements OnInit {
 
-  public myDate: Date = new Date;
-  private timer;
+  public myDate: number = Date.now();
 
   constructor() { }
 
   ngOnInit() {
-    this.timer = setInterval(() => {
-      this.myDate = new Date();
+    // this.timer = setInterval(() => {
+    //   this.myDate = new Date();
+    // }, 1000);
+    
+
+    setInterval(() => {
+      this.myDate = Date.now()
     }, 1000);
   }
 
   ngOnDestroy(){
-    clearInterval(this.timer);
   }
 
 }
