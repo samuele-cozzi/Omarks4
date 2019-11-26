@@ -18,6 +18,6 @@ admin.initializeApp({
 // });
 
 exports.message = require('./https/messages.function');    
-//exports.weather = require('./https/testweather.function');    
-exports.weather = require('./pubsub/scheduled/weather.function');
+exports.weather = require('./https/weather.function');    
+//exports.weather = require('./pubsub/scheduled/weather.function');
 
