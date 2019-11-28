@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
-const calendar = google.calendar('v3');
+const people = google.people('v1');
 const googleCredential = require('../config/client_secret.json');
 
 
@@ -19,9 +19,8 @@ function getOauthClient(){
     );
 
     oAuth2Client.setCredentials({
-        refresh_token: googleCredential.calendar.refresh_token
+        refresh_token: googleCredential.contacts.refresh_token
     });
-    //oAuth2Client.refreshToken = googleCredential.refresh_token;
 
     return oAuth2Client;
 }
@@ -31,18 +30,14 @@ function getOauthClient(){
 
 
 
-app.get('/api/calendars/:calendarId/events', async (req, res) => {
+app.get('/api/contacts/:contactId', async (req, res) => {
     try {
         const oAuth2Client = getOauthClient();
 
-        const response = await calendar.events.list({
+        const response = await people.people.get({
             auth: oAuth2Client,
-            calendarId: req.param("calendarId"),
-            timeMin: (new Date()).toISOString(),
-            maxResults: 10,
-            singleEvents: true,
-            orderBy: 'startTime',
-            prettyPrint: true
+            resourceName: 'people/' + req.param("contactId"),
+            personFields: 'names,emailAddresses'
         });
 
         console.log(JSON.stringify(response));
@@ -54,18 +49,15 @@ app.get('/api/calendars/:calendarId/events', async (req, res) => {
 
 });
 
-app.get('/api/calendars', async (req, res) => {
+app.get('/api/contacts', async (req, res) => {
     try {
         const oAuth2Client = getOauthClient();
 
-        const response = await calendar.calendarList.list({
+        const response = await people.people.connections.list({
             auth: oAuth2Client,
-            calendarId: 'samuele.cozzi@gmail.com',
-            // timeMin: (new Date()).toISOString(),
-            // maxResults: 10,
-            // singleEvents: true,
-            // orderBy: 'startTime',
-            // prettyPrint: true
+            resourceName: 'people/me',
+            personFields: 'names,emailAddresses'
+
         });
 
         console.log(JSON.stringify(response));
