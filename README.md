@@ -28,8 +28,8 @@
 ### Prerequisites
 - Git
 - Node js ( ```sudo apt install nodejs; sudo apt install npm``` )
-- Ionic (```npm install -g ionic```)
-- Firebase (```npm install -g firebase-tools```)
+- Ionic (```sudo npm install -g ionic```)
+- Firebase (```sudo npm install -g firebase-tools```)
 
 ### Prepare
 
