@@ -8,8 +8,8 @@ pool:
 
 steps:
 - task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
+  #inputs:
+  #  versionSpec: '8.x'
   displayName: 'Install Node.js'
 
 - script: |
@@ -20,9 +20,9 @@ steps:
     npm install -g firebase-tools
   displayName: 'firebase-tools install'
 
-- script: |
-    npm install -g @angular/cli
-  displayName: '@angular/cli install'
+# - script: |
+#     npm install -g @angular/cli
+#   displayName: '@angular/cli install'
   
 
 - script: |
@@ -36,7 +36,7 @@ steps:
   displayName: 'npm install functions'
 
 - script: |
-    ionic build --prod
+    ionic build --prod --verbose
   displayName: 'ionic build'
  
 - script: |
