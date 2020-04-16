@@ -19,6 +19,10 @@ steps:
 - script: |
     npm install -g firebase-tools
   displayName: 'firebase-tools install'
+
+- script: |
+    npm install -g @angular/cli
+  displayName: '@angular/cli install'
   
 
 - script: |
