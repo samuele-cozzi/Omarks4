@@ -56,6 +56,10 @@
       </ion-label>
       <ion-toggle [(ngModel)]="srv.settings.dark" (ngModelChange)="save($event)" slot="end"></ion-toggle>
     </ion-item>
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-input type="text" [(ngModel)]='srv.settings.city' (ngModelChange)="save($event)" required></ion-input>
+    </ion-item>
     <!-- <ion-item>
       <ion-label>Default Label</ion-label>
       <ion-input [(ngModel)]="srv.settings.text" (ngModelChange)="save($event)"></ion-input>

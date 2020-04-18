@@ -70,5 +70,10 @@ $ firebase deploy --only functions,hosting,database
 
 ## References
 
+[Firebase](https://console.firebase.google.com/project/omarks4/overview)
+[Azure Devops](https://dev.azure.com/samuelecozzi0829/Omarks4)
+
+[Firebase deploy CI](https://stackoverflow.com/questions/34192993/how-can-i-get-firebase-deploy-email-or-token-parameters-to-work)
+
 ## License
 - [MIT License](/LICENSE)
