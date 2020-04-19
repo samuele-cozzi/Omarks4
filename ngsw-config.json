@@ -23,16 +23,18 @@
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
-    }, {
-      "name": "firebase-storage",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
-      "resources": {
-        "files": [
-          "**/omarks4\\.appspot\\.com/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)?**"
-        ]
-      }
     }
-  ]
+  ],
+  "dataGroups": [{
+    "name": "api-freshness",
+    "urls": [
+      "https://firebasestorage.googleapis.com/v0/b/omarks4.appspot.com/"
+    ],
+    "cacheConfig": {
+      "maxSize": 1000,
+      "maxAge": "180d",
+      "timeout": "10s",
+      "strategy": "freshness"
+    }
+  }]
 }
