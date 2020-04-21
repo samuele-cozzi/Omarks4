@@ -28,7 +28,8 @@
   "dataGroups": [{
     "name": "api-freshness",
     "urls": [
-      "https://firebasestorage.googleapis.com/v0/b/omarks4.appspot.com/"
+      "https://firebasestorage.googleapis.com/v0/b/omarks4.appspot.com/",
+      "http://openweathermap.org/img/"
     ],
     "cacheConfig": {
       "maxSize": 1000,

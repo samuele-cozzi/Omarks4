@@ -1,13 +1,14 @@
 <ion-list lines="none">
-  <ion-item>
+  <ion-item *ngIf="srv.today">
     <ion-avatar slot="start">
-      <img src="http://openweathermap.org/img/wn/02n@2x.png">
+      <img src="http://openweathermap.org/img/wn/{{srv.today?.icon}}@2x.png">
+    </ion-avatar>
+    <ion-label>{{srv.today?.temp_min}}°/{{srv.today?.temp_max}}° - {{srv.today?.city}}</ion-label>
+    <ion-avatar slot="end">
+      <img src="http://openweathermap.org/img/wn/{{srv.tomorrow?.icon}}@2x.png">
     </ion-avatar>
     <ion-avatar slot="end">
-      <img src="http://openweathermap.org/img/wn/10n@2x.png">
-    </ion-avatar>
-    <ion-avatar slot="end">
-      <img src="http://openweathermap.org/img/wn/13n@2x.png">
+      <img src="http://openweathermap.org/img/wn/{{srv.dayAfter?.icon}}@2x.png">
     </ion-avatar>
   </ion-item>
 </ion-list>

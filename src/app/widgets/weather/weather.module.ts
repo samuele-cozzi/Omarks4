@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
-import { DashboardService} from '../../services/dashboard.service';
+import { WeatherService} from '../../services/weather.service';
 import { WeatherComponent } from './weather.component';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { WeatherComponent } from './weather.component';
     WeatherComponent
   ],
   providers:[
-    DashboardService
+    WeatherService
   ],
   entryComponents:[
     WeatherComponent
