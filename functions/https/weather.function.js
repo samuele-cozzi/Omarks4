@@ -35,23 +35,31 @@ app.get('/api/weather', async (req, res) => {
             users.push({ key: childSnapshot.id, data: childSnapshot.data() });
         });
 
-        for (let index = 0; index < users.length; index++) {
-            //console.log(users[index]);
-            try {
-                const weatherForecast = await getWeatherForecast(users[index].data.weatherCity)
 
-                weatherForecast.forEach(forecast => {
-                    db.collection(`settings/${users[index].key}/weather`).doc(forecast.date).set(forecast);
-                });
+        for (let index = 0; index < users.length; index++) {
+            try {
+                console.log('city: ' + users[index].data.city);
+
+                if (users[index].data.city)  {
+                    const weatherToday = await getWeather(users[index].data.city);
+                    db.collection('settings').doc(users[index].key).collection('weather').doc('today').set(weatherToday);
+
+                    const weatherForecast = await getWeatherForecast(users[index].data.city);
+
+                    weatherForecast.forEach(forecast => {
+                        //db.collection(`settings/${users[index].key}/weather`).doc(forecast.date).set(forecast);
+                        db.collection('settings').doc(users[index].key).collection('weather').doc(forecast.date).set(forecast);
+                    });
+                }
             }
             catch (error) {
                 console.log('Error getting messages', error.message);
                 res.sendStatus(500);
             }
-            
+
         }
         users.forEach(element => {
-            
+
         });
 
 
@@ -85,6 +93,18 @@ app.get('/api/weather', async (req, res) => {
 
     // //console.log(result);
 });
+
+
+async function getWeather(city) {
+    try {
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=b985e8aece721f240b9c9871cf128c09`);
+        //console.log(response.data);
+        return response.data;
+
+    } catch (error) {
+        console.log('Error getting messages', error.message);
+    }
+}
 
 async function getWeatherForecast(city) {
     try {
@@ -129,13 +149,13 @@ async function getWeatherForecast(city) {
                     main: key,
                     count: element[key],
                     date: _forecastXday_arr[index].key,
-                    day_forecast: _forecastXday_arr[index].value.find(e => e.weather_main == key),
+                    day_forecast: _forecastXday_arr[index].value.find(e => e.weather_main === key),
                     hour_forecast: _forecastXday_arr[index].value
                 };
             });
 
             let max_count = Math.max.apply(Math, result.map(function (o) { return o.count; }));
-            _dayForecast.push(result.find(e => e.count == max_count));
+            _dayForecast.push(result.find(e => e.count === max_count));
 
 
 

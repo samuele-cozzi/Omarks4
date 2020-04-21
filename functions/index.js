@@ -10,16 +10,16 @@ admin.initializeApp({
 });
   
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
+// Create and Deploy Your First Cloud Functions
+// https://firebase.google.com/docs/functions/write-firebase-functions
+
 // exports.helloWorld = functions.https.onRequest((request, response) => {
 //  response.send("Hello from Firebase!");
 // });
 
 exports.message = require('./https/messages.function');    
 exports.weather = require('./https/weather.function');    
-exports.calendar = require('./https/calendar.function');    
-exports.people = require('./https/contacts.function');
+//exports.calendar = require('./https/calendar.function');    
+//exports.people = require('./https/contacts.function');
 //exports.weather = require('./pubsub/scheduled/weather.function');
 
