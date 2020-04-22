@@ -1,14 +1,16 @@
 <ion-list lines="none">
   <ion-item *ngIf="srv.today">
     <ion-avatar slot="start">
-      <img src="http://openweathermap.org/img/wn/{{srv.today?.icon}}@2x.png">
+      <img src="https://firebasestorage.googleapis.com/v0/b/omarks4.appspot.com/o/weather%2F{{srv.today?.icon}}@2x.png?alt=media">
     </ion-avatar>
-    <ion-label>{{srv.today?.temp_min}}°/{{srv.today?.temp_max}}° - {{srv.today?.city}}</ion-label>
+    <ion-label>{{srv.today?.city}} - {{srv.today?.temp_min}}°/{{srv.today?.temp_max}}°</ion-label>
+    
     <ion-avatar slot="end">
-      <img src="http://openweathermap.org/img/wn/{{srv.tomorrow?.icon}}@2x.png">
+      
+      <img src="https://firebasestorage.googleapis.com/v0/b/omarks4.appspot.com/o/weather%2F{{srv.tomorrow?.icon}}@2x.png?alt=media">
     </ion-avatar>
     <ion-avatar slot="end">
-      <img src="http://openweathermap.org/img/wn/{{srv.dayAfter?.icon}}@2x.png">
+      <img src="https://firebasestorage.googleapis.com/v0/b/omarks4.appspot.com/o/weather%2F{{srv.dayAfter?.icon}}@2x.png?alt=media">
     </ion-avatar>
   </ion-item>
 </ion-list>

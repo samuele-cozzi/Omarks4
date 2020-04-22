@@ -33,7 +33,7 @@ export class WeatherService {
 
         let todaydoc = this.afs.collection('settings/' + this.uid + '/weather').doc('today');
         todaydoc.get().subscribe((val) => {
-            if (val) {
+            if (val.exists) {
                 this.today = new Weather();
                 this.today.city = val.get("name");
                 this.today.temp_max = val.get("main").temp_max;
@@ -48,7 +48,7 @@ export class WeatherService {
 
         let tomorrowdoc = this.afs.collection('settings/' + this.uid + '/weather').doc(currentDate.toISOString().split('T')[0]);
         tomorrowdoc.get().subscribe((val) => {
-            if (val) {
+            if (val.exists) {
                 this.tomorrow = new Weather();
                 this.tomorrow.temp_max = val.get("day_forecast").value.main.temp_max;
                 this.tomorrow.temp_min = val.get("day_forecast").value.main.temp_mix;
@@ -61,7 +61,7 @@ export class WeatherService {
 
         let dayAfterdoc = this.afs.collection('settings/' + this.uid + '/weather').doc(currentDate.toISOString().split('T')[0]);
         dayAfterdoc.get().subscribe((val) => {
-            if (val) {
+            if (val.exists) {
                 this.dayAfter = new Weather();
                 this.dayAfter.temp_max = val.get("day_forecast").value.main.temp_max;
                 this.dayAfter.temp_min = val.get("day_forecast").value.main.temp_mix;
