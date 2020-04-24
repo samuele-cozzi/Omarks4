@@ -17,9 +17,10 @@ admin.initializeApp({
 //  response.send("Hello from Firebase!");
 // });
 
-exports.message = require('./https/messages.function');    
+//exports.message = require('./https/messages.function');    
 exports.weather = require('./https/weather.function');    
-exports.calendar = require('./https/calendar.function');    
-exports.people = require('./https/contacts.function');
+//exports.calendar = require('./https/calendar.function');    
+//exports.people = require('./https/contacts.function');
+exports.user = require('./https/users.function');
 //exports.weather = require('./pubsub/scheduled/weather.function');
 

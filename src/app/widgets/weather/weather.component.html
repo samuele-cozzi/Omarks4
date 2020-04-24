@@ -1,9 +1,9 @@
 <ion-list lines="none">
-  <ion-item *ngIf="srv.today">
+  <ion-item *ngIf="srv.today" (click)="open($event)">
     <ion-avatar slot="start">
       <img src="https://firebasestorage.googleapis.com/v0/b/omarks4.appspot.com/o/weather%2F{{srv.today?.icon}}@2x.png?alt=media">
     </ion-avatar>
-    <ion-label>{{srv.today?.city}} - {{srv.today?.temp_min}}°/{{srv.today?.temp_max}}°</ion-label>
+    <ion-label>{{srv.today?.temp_min}}°/{{srv.today?.temp_max}}° - {{srvSettings.settings.city}} </ion-label>
     
     <ion-avatar slot="end">
       

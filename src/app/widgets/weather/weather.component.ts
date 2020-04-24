@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService} from '../../services/weather.service';
+import { WeatherService } from '../../services/weather.service';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-weather',
@@ -9,11 +10,16 @@ import { WeatherService} from '../../services/weather.service';
 export class WeatherComponent implements OnInit {
 
   constructor(
-    public srv: WeatherService
+    public srv: WeatherService,
+    public srvSettings: SettingsService,
   ) { }
 
   ngOnInit() {
-    console.log(this.srv);
+    //console.log(this.srv);
+  }
+
+  open(event) {
+    window.open("https://www.google.com/search?q=previsioni")
   }
 
 }
