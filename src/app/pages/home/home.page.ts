@@ -42,9 +42,9 @@ export class HomePage implements OnInit {
       .observe([Breakpoints.Medium, Breakpoints.HandsetPortrait])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
-          this.mobile = true;
+          this.mobile = false;
           console.log(
-            'Matches x-small viewport or handset in portrait mode'
+            'Matches Medium viewport or handset in portrait mode'
           );
         }
       });
@@ -54,7 +54,7 @@ export class HomePage implements OnInit {
         if (state.matches) {
           this.mobile = false;
           console.log(
-            'Matches x-small viewport or handset in portrait mode'
+            'Matches Large viewport or handset in portrait mode'
           );
         }
       });
@@ -64,7 +64,7 @@ export class HomePage implements OnInit {
         if (state.matches) {
           this.mobile = false;
           console.log(
-            'Matches x-small viewport or handset in portrait mode'
+            'Matches x-large viewport or handset in portrait mode'
           );
         }
       });
