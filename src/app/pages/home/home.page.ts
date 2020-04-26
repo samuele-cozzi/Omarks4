@@ -42,6 +42,26 @@ export class HomePage implements OnInit {
       .observe([Breakpoints.Medium, Breakpoints.HandsetPortrait])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
+          this.mobile = true;
+          console.log(
+            'Matches x-small viewport or handset in portrait mode'
+          );
+        }
+      });
+      this.breakpointObserver
+      .observe([Breakpoints.Large, Breakpoints.HandsetPortrait])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.mobile = false;
+          console.log(
+            'Matches x-small viewport or handset in portrait mode'
+          );
+        }
+      });
+      this.breakpointObserver
+      .observe([Breakpoints.XLarge, Breakpoints.HandsetPortrait])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
           this.mobile = false;
           console.log(
             'Matches x-small viewport or handset in portrait mode'

@@ -2,13 +2,13 @@
   <ion-grid *ngIf="!srv.searching">
     <ion-row #first>
       
-      <ion-col size-xs="10" size-sm="10" size-md="10" size-lg="10" size-xl="6" push="1" pull="1">
+      <ion-col size-xs="10" size-sm="10" size-md="10" size-lg="6" size-xl="6" push="1" pull="1">
         <app-weather *ngIf="mobile"></app-weather>
         <app-clock *ngIf="mobile" ></app-clock>
         <app-apps></app-apps>
       </ion-col>
 
-      <ion-col size-xs="0" size-sm="0" size-md="0" size-lg="0" size-xl="4" offset="2">
+      <ion-col size-xs="0" size-sm="0" size-md="0" size-lg="4" size-xl="4" offset="2">
         <ion-content>
           <app-weather></app-weather>
           <app-clock></app-clock>
