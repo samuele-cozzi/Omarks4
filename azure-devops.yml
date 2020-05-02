@@ -40,5 +40,5 @@ steps:
   displayName: 'ionic build'
  
 - script: |
-    firebase deploy --only hosting --token $(firebase-token)
+    firebase deploy --token $(firebase-token)
   displayName: 'firebase deploy' 
