@@ -18,7 +18,8 @@ app.get('/api/users', async (req, res) => {
             users.push({ 
                 key: childSnapshot.key, 
                 mail: childSnapshot.data().email, 
-                uid: childSnapshot.data().uid
+                uid: childSnapshot.data().uid,
+                providerId: childSnapshot.data().providerId
             });
         });
 
@@ -34,10 +35,57 @@ app.get('/api/users', async (req, res) => {
     }
 });
 
+// GET /api/users/{userId}
+// Get details about a user
+app.get('/api/users/:userId', async (req, res) => {
+    const userId = req.params.userId;
+
+    console.log(`LOOKING UP MESSAGE "${userId}"`);
+
+    try {
+        const user = await getUser(userId);
+
+        const setting = await getSetting(userId);
+        user.settings = setting;
+
+        const provider = await getProvider(user.providerId);
+        user.provider = provider;
+
+        return res.status(200).json(user);
+    } catch (error) {
+        console.log('Error getting message details', messageId, error.message);
+        return res.sendStatus(500);
+    }
+});
+
+async function getUser(user_id) {
+    try {
+        //console.log(user_id);
+        let querySetting = db.collection(`/users`).doc(user_id);
+        const snapshotSetting = await querySetting.get();
+        return snapshotSetting.data();
+
+    } catch (error) {
+        console.log('Error getting setting', error.message);
+    }
+}
+
 async function getSetting(user_id) {
     try {
         //console.log(user_id);
         let querySetting = db.collection(`/settings`).doc(user_id);
+        const snapshotSetting = await querySetting.get();
+        return snapshotSetting.data();
+
+    } catch (error) {
+        console.log('Error getting setting', error.message);
+    }
+}
+
+async function getProvider(provider_id) {
+    try {
+        //console.log(provider_id);
+        let querySetting = db.collection(`/providers`).doc(provider_id);
         const snapshotSetting = await querySetting.get();
         return snapshotSetting.data();
 
