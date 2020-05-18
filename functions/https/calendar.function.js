@@ -1,80 +1,36 @@
-const { google } = require('googleapis');
-const OAuth2 = google.auth.OAuth2;
-const calendar = google.calendar('v3');
-const googleCredential = require('../config/client_secret.json');
-
-
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+//const axios = require("axios");
+
 const express = require('express');
 const app = express();
 
 const db = admin.firestore();
 
-function getOauthClient(){
-    const oAuth2Client = new OAuth2(
-        googleCredential.web.client_id,
-        googleCredential.web.client_secret,
-        googleCredential.web.redirect_uris[0]
-    );
+app.post('/api/settings/:uid/calendar/:eventid', async (req, res) => {
+    const _uid = req.params.uid;
+    const _eventid = req.params.eventid
+    const _body = req.body;
 
-    oAuth2Client.setCredentials({
-        refresh_token: googleCredential.calendar.refresh_token
-    });
-    //oAuth2Client.refreshToken = googleCredential.refresh_token;
+    console.log(`ANALYZING MESSAGE: UID-"${_uid}" "${JSON.stringify(_body)}"`);
 
-    return oAuth2Client;
-}
-
-
-
-
-
-
-app.get('/api/calendars/:calendarId/events', async (req, res) => {
     try {
-        const oAuth2Client = getOauthClient();
+        //   const results = await client.analyzeSentiment({
+        //     document: { content: message, type: 'PLAIN_TEXT' }
+        //   });
 
-        const response = await calendar.events.list({
-            auth: oAuth2Client,
-            calendarId: req.param("calendarId"),
-            timeMin: (new Date()).toISOString(),
-            maxResults: 10,
-            singleEvents: true,
-            orderBy: 'startTime',
-            prettyPrint: true
-        });
+        //   const category = categorizeScore(results[0].documentSentiment.score);
+        //   const data = {message: message, sentiment: results[0], category: category};
 
-        console.log(JSON.stringify(response));
-        res.status(200).json(response);
+        //   await admin.database().ref(`/users/${req.user.uid}/messages`).push(message);
+
+        const snapshot = await db.collection('settings').doc(_uid).collection('calendar').doc(_eventid).set(_body);
+
+        res.status(201).json({ id: snapshot.id });
     } catch (error) {
-        console.log('Error find list of events', error.message);
+        console.log('Insert error: ', error.message);
         res.sendStatus(500);
     }
-
-});
-
-app.get('/api/calendars', async (req, res) => {
-    try {
-        const oAuth2Client = getOauthClient();
-
-        const response = await calendar.calendarList.list({
-            auth: oAuth2Client,
-            calendarId: 'samuele.cozzi@gmail.com',
-            // timeMin: (new Date()).toISOString(),
-            // maxResults: 10,
-            // singleEvents: true,
-            // orderBy: 'startTime',
-            // prettyPrint: true
-        });
-
-        console.log(JSON.stringify(response));
-        res.status(200).json(response);
-    } catch (error) {
-        console.log('Error find list of events', error.message);
-        res.sendStatus(500);
-    }
-
 });
 
 exports.api = functions.https.onRequest(app);
