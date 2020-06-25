@@ -10,6 +10,8 @@ export class Settings {
     algoliaIndex: string;
     algoliaEditIndex: boolean;
     enableReorder: boolean;
+    newsSources: string;
+    newsQuery: string;
     createdAt: Timestamp;
     modifiedAt: Timestamp;
 }

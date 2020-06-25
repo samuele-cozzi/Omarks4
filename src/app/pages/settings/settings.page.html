@@ -68,6 +68,20 @@
 
   <ion-list>
     <ion-list-header>
+      <h3>News Settings</h3>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Sources</ion-label>
+      <ion-input type="text" [(ngModel)]='srv.settings.newsSources' (ngModelChange)="save($event)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Query</ion-label>
+      <ion-input type="text" [(ngModel)]='srv.settings.newsQuery' (ngModelChange)="save($event)"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
       <h3>Dashboard Items</h3>
     </ion-list-header>
     <ion-item lines="full" >
