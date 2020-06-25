@@ -26,6 +26,8 @@ app.get('/api/users', async (req, res) => {
         for (let i = 0; i < users.length; i++) {
             const setting = await getSetting(users[i].uid);
             users[i].city = setting.city;
+            users[i].newsSources = setting.newsSources;
+            users[i].newsQuery = setting.newsQuery;
         }
 
         res.status(200).json(users);
