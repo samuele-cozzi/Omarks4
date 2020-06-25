@@ -27,5 +27,6 @@ exports.calendar = require('./https/calendar.function');
 //exports.people = require('./https/contacts.function');
 exports.user = require('./https/users.function');
 exports.setting = require('./https/settings.function');
+exports.news = require('./https/news.function');
 //exports.weather = require('./pubsub/scheduled/weather.function');
 
