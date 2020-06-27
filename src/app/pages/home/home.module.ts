@@ -9,6 +9,7 @@ import { AppsComponentModule } from '../../components/apps/apps.module';
 import { SearchComponentModule } from '../../components/search/search.module';
 import{ WeatherComponentModule } from '../../widgets/weather/weather.module';
 import { ClockComponentModule } from '../../widgets/clock/clock.module';
+import { NewsComponentModule } from '../../widgets/news/news.module';
 import { ContactsComponentModule } from '../../widgets/contacts/contacts.module';
 import { AgendaComponentModule } from '../../widgets/agenda/agenda.module';
 import { MapComponentModule } from '../../widgets/map/map.module';
@@ -29,6 +30,7 @@ import { HomePage } from './home.page';
     ContactsComponentModule,
     AgendaComponentModule,
     MapComponentModule,
+    NewsComponentModule,
     RouterModule.forChild([
       {
         path: '',

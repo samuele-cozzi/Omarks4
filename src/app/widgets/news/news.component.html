@@ -1,0 +1,12 @@
+<ion-list *ngIf="srv.news">
+  <ion-item *ngFor="let item of srv.news">
+    <ion-avatar slot="start">
+      <img src="{{item.urlToImage}}">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{item.title}}</h2>
+      <h3>{{item.publishedAt}}</h3>
+      <p>L{{item.description}}<p>
+    </ion-label>
+  </ion-item>
+</ion-list>
