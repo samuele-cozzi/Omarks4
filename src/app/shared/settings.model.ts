@@ -12,6 +12,7 @@ export class Settings {
     enableReorder: boolean;
     newsSources: string;
     newsQuery: string;
+    refresh_token: string;
     createdAt: Timestamp;
     modifiedAt: Timestamp;
 }

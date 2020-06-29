@@ -18,55 +18,55 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.breakpointObserver
-      .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.mobile = true;
-          console.log(
-            'Matches small viewport or handset in portrait mode'
-          );
-        }
-      });
-      this.breakpointObserver
-      .observe([Breakpoints.XSmall, Breakpoints.HandsetPortrait])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.mobile = true;
-          console.log(
-            'Matches x-small viewport or handset in portrait mode'
-          );
-        }
-      });
-      this.breakpointObserver
-      .observe([Breakpoints.Medium, Breakpoints.HandsetPortrait])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.mobile = false;
-          console.log(
-            'Matches Medium viewport or handset in portrait mode'
-          );
-        }
-      });
-      this.breakpointObserver
-      .observe([Breakpoints.Large, Breakpoints.HandsetPortrait])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.mobile = false;
-          console.log(
-            'Matches Large viewport or handset in portrait mode'
-          );
-        }
-      });
-      this.breakpointObserver
-      .observe([Breakpoints.XLarge, Breakpoints.HandsetPortrait])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.mobile = false;
-          console.log(
-            'Matches x-large viewport or handset in portrait mode'
-          );
-        }
-      });
+    // this.breakpointObserver
+    //   .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
+    //   .subscribe((state: BreakpointState) => {
+    //     if (state.matches) {
+    //       this.mobile = true;
+    //       console.log(
+    //         'Matches small viewport or handset in portrait mode'
+    //       );
+    //     }
+    //   });
+    //   this.breakpointObserver
+    //   .observe([Breakpoints.XSmall, Breakpoints.HandsetPortrait])
+    //   .subscribe((state: BreakpointState) => {
+    //     if (state.matches) {
+    //       this.mobile = true;
+    //       console.log(
+    //         'Matches x-small viewport or handset in portrait mode'
+    //       );
+    //     }
+    //   });
+    //   this.breakpointObserver
+    //   .observe([Breakpoints.Medium, Breakpoints.HandsetPortrait])
+    //   .subscribe((state: BreakpointState) => {
+    //     if (state.matches) {
+    //       this.mobile = false;
+    //       console.log(
+    //         'Matches Medium viewport or handset in portrait mode'
+    //       );
+    //     }
+    //   });
+    //   this.breakpointObserver
+    //   .observe([Breakpoints.Large, Breakpoints.HandsetPortrait])
+    //   .subscribe((state: BreakpointState) => {
+    //     if (state.matches) {
+    //       this.mobile = false;
+    //       console.log(
+    //         'Matches Large viewport or handset in portrait mode'
+    //       );
+    //     }
+    //   });
+    //   this.breakpointObserver
+    //   .observe([Breakpoints.XLarge, Breakpoints.HandsetPortrait])
+    //   .subscribe((state: BreakpointState) => {
+    //     if (state.matches) {
+    //       this.mobile = false;
+    //       console.log(
+    //         'Matches x-large viewport or handset in portrait mode'
+    //       );
+    //     }
+    //   });
   }
 }

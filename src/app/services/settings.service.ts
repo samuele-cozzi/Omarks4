@@ -30,29 +30,40 @@ export class SettingsService {
     private afs: AngularFirestore,
     private firebaseApp: FirebaseApp
   ) {
-    this.uid = this.firebaseApp.auth().currentUser.uid;
-    this.photo_url = this.firebaseApp.auth().currentUser.photoURL;
-    this.displayName = this.firebaseApp.auth().currentUser.displayName;
-    this.email = this.firebaseApp.auth().currentUser.email;
+    
+    if(this.firebaseApp.auth().currentUser){
 
-    this.userSettingsCollection = this.afs.collection('settings');
-    this.settingsDoc = this.userSettingsCollection.doc(this.uid);
-    this.settings$ = this.settingsDoc.valueChanges();
+      this.uid = this.firebaseApp.auth().currentUser.uid;
+      this.photo_url = this.firebaseApp.auth().currentUser.photoURL;
+      this.displayName = this.firebaseApp.auth().currentUser.displayName;
+      this.email = this.firebaseApp.auth().currentUser.email;
 
-    this.settings$.subscribe((val: Settings) => {
-      if (!val) {
-        let _settings = new Settings();
-        this.settingsDoc.set(Object.assign({},_settings));
-      } else {
-        this.settings = val;
+      this.userSettingsCollection = this.afs.collection('settings');
+      this.settingsDoc = this.userSettingsCollection.doc(this.uid);
+      this.settings$ = this.settingsDoc.valueChanges();
 
-        document.body.classList.toggle('dark', this.settings.dark);
-      }
-    });
+      this.settings$.subscribe((val: Settings) => {
+        if (!val) {
+          let _settings = new Settings();
+          this.settingsDoc.set(Object.assign({},_settings));
+        } else {
+          this.settings = val;
+
+          document.body.classList.toggle('dark', this.settings.dark);
+        }
+      });
+    
+    }
   }
 
   update(){
     this.settingsDoc.set(this.settings , {merge: true});
+  }
+
+  updateRefreshToken(uid , refreshToken){
+
+    this.afs.collection('settings').doc(uid).update({"refresh_token": refreshToken});
+    
   }
 
   get timestamp() {
