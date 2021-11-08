@@ -15,7 +15,7 @@
   <ion-item *ngFor="let item of srv.searchItems" (click)="open(item, $event)">
     <ion-avatar slot="start">
       <img *ngIf="item?.has_image == 0"
-        src="https://api.faviconkit.com/{{item.given_url?.split('/')[2]}}/144" />
+        src="https://icons.duckduckgo.com/ip2/{{_item.given_url?.split('/')[2]}}.ico" />
 
       <img *ngIf="item?.has_image == 1" src="{{item?.image?.src}}" />
     </ion-avatar>
@@ -40,7 +40,7 @@
   <ion-item *ngFor="let item of srv.searchItems" (click)="open(item, $event)">
     <ion-avatar slot="start">
       <img *ngIf="item?.has_image == 0"
-        src="https://api.faviconkit.com/{{item.given_url?.split('/')[2]}}/144" />
+        src="https://icons.duckduckgo.com/ip2/{{_item.given_url?.split('/')[2]}}.ico" />
 
       <img *ngIf="item?.has_image == 1" src="{{item?.image?.src}}" />
     </ion-avatar>
