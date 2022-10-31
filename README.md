@@ -34,6 +34,11 @@
 ### Prepare
 
 ```shell
+$ npm i -g @ionic/cli
+$ npm i -g cordova
+```
+
+```shell
 $ git clone https://github.com/samuele-cozzi/Omarks3.git
 $ code .\Omarks3\
 $ npm install
